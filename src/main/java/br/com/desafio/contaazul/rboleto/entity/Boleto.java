@@ -1,4 +1,4 @@
-package br.com.desafio.contaazul.rboleto.bean;
+package br.com.desafio.contaazul.rboleto.entity;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -14,7 +14,7 @@ public class Boleto {
     private Date due_date;
     //"total_in_cents"​ : ​ "100000"​ ,
     @Column(name = "TOTAL_IN_CENT")
-    private int total_in_cent;
+    private int total_in_cents;
     //"customer"​ : ​ "Trillian Company"​ ,
     @Column(name = "CUSTOMER")
     private String customer;
@@ -38,12 +38,12 @@ public class Boleto {
         this.due_date = due_date;
     }
 
-    public int getTotal_in_cent() {
-        return total_in_cent;
+    public int getTotal_in_cents() {
+        return total_in_cents;
     }
 
-    public void setTotal_in_cent(int total_in_cent) {
-        this.total_in_cent = total_in_cent;
+    public void setTotal_in_cents(int total_in_cents) {
+        this.total_in_cents = total_in_cents;
     }
 
     public String getCustomer() {

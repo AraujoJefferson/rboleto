@@ -26,4 +26,8 @@ public enum BoletoStatusEnum {
         }
         return null;
     }
+
+    public String toString(){
+        return this.getCodigo();
+    }
 }

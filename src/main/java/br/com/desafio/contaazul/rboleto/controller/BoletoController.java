@@ -1,57 +1,95 @@
 package br.com.desafio.contaazul.rboleto.controller;
 
+import br.com.desafio.contaazul.rboleto.business.BoletoRepository;
+import br.com.desafio.contaazul.rboleto.configuration.MensagemResource;
 import br.com.desafio.contaazul.rboleto.entity.Boleto;
-import br.com.desafio.contaazul.rboleto.business.BoletoBusiness;
+import br.com.desafio.contaazul.rboleto.entity.BoletoCalculado;
 import br.com.desafio.contaazul.rboleto.enumerate.BoletoStatusEnum;
+import br.com.desafio.contaazul.rboleto.validate.BoletoValidator;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
+import java.util.Optional;
+import java.util.UUID;
+import java.util.regex.Pattern;
 
 @RestController
 @RequestMapping("/rest")
 public class BoletoController {
+    private ReloadableResourceBundleMessageSource messageSource = new ReloadableResourceBundleMessageSource();
+    private final BoletoRepository repositorio;
+    private final BoletoValidator validator;
 
-    private BoletoBusiness business = new BoletoBusiness();
+    @Autowired
+    public BoletoController(BoletoRepository repositorio, BoletoValidator validator) {
+        this.repositorio = repositorio;
+        this.validator = validator;
+    }
+
+    @InitBinder
+    protected void initBinder(WebDataBinder binder) {
+        binder.addValidators(validator);
+    }
 
     @RequestMapping(method = RequestMethod.POST, path = "/bankslips")
-    public Object cadastrarBoleto(@RequestParam(value = "due_date", required = true) String due_date,
-                                          @RequestParam(value = "total_in_cents", required = true) String total_in_cents,
-                                          @RequestParam(value = "customer", required = true) String customer,
-                                          @RequestParam(value = "status", required = true) String status,
-                                          HttpServletResponse response) {
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("YYYY-MM-DD");
-        Boleto boleto = new Boleto();
-        try {
-            boleto.setDue_date(simpleDateFormat.parse(due_date));
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        boleto.setTotal_in_cents(Integer.parseInt(total_in_cents));
-        boleto.setCustomer(customer);
-        if (BoletoStatusEnum.get(status) == null) {
-            try {
-                response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Bankslip not provided in the request body");
-                return "";
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-        boleto.setStatus(status);
-        try {
-            response.sendError(HttpServletResponse.SC_CREATED,"Bankslip created");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return "";
+    public ResponseEntity<Object> salvar(@RequestBody @Valid Boleto boleto) {
+        repositorio.save(boleto);
+        return new ResponseEntity<Object>(MensagemResource.getMensagem("boleto.cadastro.ok.201"),
+                HttpStatus.CREATED);
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/bankslips")
-    public Object listarBoletos() {
-        return business.listarBoletos();
+    public ResponseEntity<Object> listar() {
+        return new ResponseEntity<Object>(repositorio.findAll(), HttpStatus.OK);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/bankslips/{id}")
+    public ResponseEntity<Object> buscar(@PathVariable @NotNull String id) {
+        if (!idValido(id)) {
+            return new ResponseEntity<Object>(MensagemResource.getMensagem("boleto.buscar.invalido.400"), HttpStatus.BAD_REQUEST);
+        }
+        Boleto boleto = null;
+        final UUID uuid = UUID.fromString(id);
+        for (Boleto value : repositorio.findAll()) {
+            if (value.getId().equals(uuid)) {
+                boleto = value;
+            }
+        }
+        if (boleto == null) {
+            return new ResponseEntity<Object>(MensagemResource.getMensagem("boleto.buscar.nao.existe.404"), HttpStatus.NOT_FOUND);
+        }
+        BoletoCalculado boletoCalculado = new BoletoCalculado(boleto);
+        return new ResponseEntity<Object>(boletoCalculado, HttpStatus.OK);
+    }
+
+    private boolean idValido(@NotNull String id) {
+        final Pattern pattern = Pattern.compile("^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{12}$");
+        return pattern.matcher(id).matches();
+    }
+
+    @RequestMapping(method = RequestMethod.PUT, path = "/bankslips/{id}/pay")
+    public ResponseEntity<Object> pagarBoleto(@PathVariable @NotNull String id) {
+        if (!idValido(id)) {
+            return new ResponseEntity<Object>(MensagemResource.getMensagem("boleto.buscar.invalido.400"), HttpStatus.BAD_REQUEST);
+        }
+        Boleto boleto = null;
+        final UUID uuid = UUID.fromString(id);
+        for (Boleto value : repositorio.findAll()) {
+            if (value.getId().equals(uuid)) {
+                boleto = value;
+            }
+        }
+        if (boleto == null) {
+            return new ResponseEntity<Object>(MensagemResource.getMensagem("boleto.pagar.nao.existe.404"), HttpStatus.NOT_FOUND);
+        }
+        boleto.setStatus(BoletoStatusEnum.PAID.toString());
+        repositorio.save(boleto);
+        return new ResponseEntity<Object>(MensagemResource.getMensagem("boleto.pagar.ok.200"), HttpStatus.OK);
     }
 }

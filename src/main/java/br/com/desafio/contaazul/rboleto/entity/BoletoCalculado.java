@@ -1,13 +1,16 @@
 package br.com.desafio.contaazul.rboleto.entity;
 
 import java.math.BigDecimal;
-import java.math.RoundingMode;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.time.Duration;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.UUID;
 
 public class BoletoCalculado {
+    public static final String LT10 = "0.05";
+    public static final String GT10 = "0.1";
+    public static final String DEFAULT = "0,0";
     private UUID id;
     private String due_date;
     private String total_in_cents;
@@ -25,33 +28,20 @@ public class BoletoCalculado {
     }
 
     private void trataJuros() {
-        Date dataBoleto = null;
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
-        try {
-            dataBoleto = sdf.parse(due_date);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        Date dataAtual = new Date();
-        dataAtual.setHours(0);
-        dataAtual.setMinutes(0);
-        dataAtual.setSeconds(0);
-        long dias = retornaDias(dataAtual, dataBoleto);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        LocalDateTime fromDateTime = LocalDateTime.from(LocalDate.parse(due_date, formatter).atStartOfDay());
+        long days = Duration.between(LocalDateTime.now().toLocalDate().atStartOfDay(), fromDateTime).toDays();
 
-        if (dias >= 0 && dias <= 10) {
-            this.fine = new BigDecimal(total_in_cents).multiply(new BigDecimal("0.05")).setScale(0).toString();
-        } else if (dias >= 10) {
-            this.fine = new BigDecimal(total_in_cents).multiply(new BigDecimal("0.1")).setScale(0).toString();
+        if (days > 0 && days <= 10) {
+            this.fine = new BigDecimal(total_in_cents).multiply(new BigDecimal(LT10)).setScale(0).toString();
+        } else if (days > 10) {
+            this.fine = new BigDecimal(total_in_cents).multiply(new BigDecimal(GT10)).setScale(0).toString();
         } else {
-            this.fine = "0,0";
+            this.fine = DEFAULT;
         }
     }
 
-    private long retornaDias(Date dataIni, Date dataFim) {
-        long dt = (dataFim.getTime() - dataIni.getTime()) + 3600000; // 1 hora para compensar horário de verão
-        return dt / 86400000L; // passaram-se 67111 dias
-    }
 
     public UUID getId() {
         return id;

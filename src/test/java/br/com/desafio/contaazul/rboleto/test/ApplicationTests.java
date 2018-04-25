@@ -47,7 +47,7 @@ public class ApplicationTests {
                         "\"customer\":\"Jefferson P Araujo\"," +
                         "\"status\":\"PENDING\"}"))
                 .andExpect(status().isCreated())
-                .andExpect(content().string(mensagemResource.getMensagem("boleto.cadastro.ok.201"))).andReturn();
+                .andExpect(content().string(mensagemResource.getMensagem("bankslips.save.ok.201"))).andReturn();
     }
 
     @Test
@@ -91,13 +91,13 @@ public class ApplicationTests {
                 .andExpect(status().isCreated());
         mockMvc.perform(put("/rest/bankslips/1/pay"))
                 .andExpect(status().isOk())
-                .andExpect(content().string(mensagemResource.getMensagem("boleto.pagar.ok.200"))).andReturn();
+                .andExpect(content().string(mensagemResource.getMensagem("bankslips.pay.ok.200"))).andReturn();
     }
 
     @Test
     public void pagarBoletoNaoExistente() throws Exception {
         mockMvc.perform(put("/rest/bankslips/19/pay"))
                 .andExpect(status().isNotFound())
-                .andExpect(content().string(mensagemResource.getMensagem("boleto.pagar.nao.existe.404"))).andReturn();
+                .andExpect(content().string(mensagemResource.getMensagem("bankslips.pay.not.exist.404"))).andReturn();
     }
 }

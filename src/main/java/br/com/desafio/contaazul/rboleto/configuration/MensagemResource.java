@@ -1,7 +1,6 @@
 package br.com.desafio.contaazul.rboleto.configuration;
 
 import org.springframework.context.MessageSource;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 
@@ -9,7 +8,7 @@ import java.util.Locale;
 
 @Configuration
 public class MensagemResource {
-    private static Locale locale = new Locale("pt", "BR");
+    private static Locale locale = Locale.getDefault();
 
     private static MessageSource messageSource() {
         ReloadableResourceBundleMessageSource messageSource = new ReloadableResourceBundleMessageSource();

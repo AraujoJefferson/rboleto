@@ -1,9 +1,11 @@
 package br.com.desafio.contaazul.rboleto.entity;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
-import java.util.Date;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
 import java.util.UUID;
 
 @Entity
@@ -14,16 +16,21 @@ public class Boleto {
     @GenericGenerator(name = "uuid2", strategy = "uuid2")
     @Column(name = "uuid", columnDefinition = "BINARY(16)")
     private UUID id;
-    //"due_date"​ : ​ "2018-01-01"​ ,
+
+    @NotBlank
     @Column(name = "DUE_DATE")
     private String due_date;
-    //"total_in_cents"​ : ​ "100000"​ ,
+
+    @NotBlank
     @Column(name = "TOTAL_IN_CENT")
+    @Min(0)
     private String total_in_cents;
-    //"customer"​ : ​ "Trillian Company"​ ,
+
+    @NotBlank
     @Column(name = "CUSTOMER")
     private String customer;
-    //"status"​ : ​ "PENDING"
+
+    @NotBlank
     @Column(name = "STATUS")
     private String status;
 
@@ -35,6 +42,7 @@ public class Boleto {
     public void setId(UUID i) {
         this.id = i;
     }
+
     public String getDue_date() {
         return due_date;
     }

@@ -32,7 +32,7 @@ public class BoletoController {
         this.validator = validator;
     }
 
-    @InitBinder
+    @InitBinder("boleto")
     protected void initBinder(WebDataBinder binder) {
         binder.addValidators(validator);
     }
@@ -40,7 +40,7 @@ public class BoletoController {
     @RequestMapping(method = RequestMethod.POST, path = "/bankslips")
     public ResponseEntity<Object> salvar(@RequestBody @Valid Boleto boleto) {
         repositorio.save(boleto);
-        return new ResponseEntity<Object>(MensagemResource.getMensagem("boleto.cadastro.ok.201"),
+        return new ResponseEntity<Object>(MensagemResource.getMensagem("bankslips.save.ok.201"),
                 HttpStatus.CREATED);
     }
 
@@ -52,19 +52,15 @@ public class BoletoController {
     @RequestMapping(method = RequestMethod.GET, path = "/bankslips/{id}")
     public ResponseEntity<Object> buscar(@PathVariable @NotNull String id) {
         if (!idValido(id)) {
-            return new ResponseEntity<Object>(MensagemResource.getMensagem("boleto.buscar.invalido.400"), HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<Object>(MensagemResource.getMensagem("bankslips.search.invalid.400"), HttpStatus.BAD_REQUEST);
         }
-        Boleto boleto = null;
-        final UUID uuid = UUID.fromString(id);
-        for (Boleto value : repositorio.findAll()) {
-            if (value.getId().equals(uuid)) {
-                boleto = value;
-            }
+        Optional<Boleto> byId = repositorio.findById(UUID.fromString(id));
+
+        if (byId.isPresent()) {
+            return new ResponseEntity<Object>(MensagemResource.getMensagem("bankslips.search.not.exist.404"), HttpStatus.NOT_FOUND);
         }
-        if (boleto == null) {
-            return new ResponseEntity<Object>(MensagemResource.getMensagem("boleto.buscar.nao.existe.404"), HttpStatus.NOT_FOUND);
-        }
-        BoletoCalculado boletoCalculado = new BoletoCalculado(boleto);
+
+        BoletoCalculado boletoCalculado = new BoletoCalculado(byId.get());
         return new ResponseEntity<Object>(boletoCalculado, HttpStatus.OK);
     }
 
@@ -76,20 +72,15 @@ public class BoletoController {
     @RequestMapping(method = RequestMethod.PUT, path = "/bankslips/{id}/pay")
     public ResponseEntity<Object> pagarBoleto(@PathVariable @NotNull String id) {
         if (!idValido(id)) {
-            return new ResponseEntity<Object>(MensagemResource.getMensagem("boleto.buscar.invalido.400"), HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<Object>(MensagemResource.getMensagem("bankslips.search.invalid.400"), HttpStatus.BAD_REQUEST);
         }
-        Boleto boleto = null;
-        final UUID uuid = UUID.fromString(id);
-        for (Boleto value : repositorio.findAll()) {
-            if (value.getId().equals(uuid)) {
-                boleto = value;
-            }
+        Optional<Boleto> byId = repositorio.findById(UUID.fromString(id));
+
+        if (byId.isPresent()) {
+            return new ResponseEntity<Object>(MensagemResource.getMensagem("bankslips.pay.not.exist.404"), HttpStatus.NOT_FOUND);
         }
-        if (boleto == null) {
-            return new ResponseEntity<Object>(MensagemResource.getMensagem("boleto.pagar.nao.existe.404"), HttpStatus.NOT_FOUND);
-        }
-        boleto.setStatus(BoletoStatusEnum.PAID.toString());
-        repositorio.save(boleto);
-        return new ResponseEntity<Object>(MensagemResource.getMensagem("boleto.pagar.ok.200"), HttpStatus.OK);
+        byId.get().setStatus(BoletoStatusEnum.PAID.toString());
+        repositorio.save(byId.get());
+        return new ResponseEntity<Object>(MensagemResource.getMensagem("bankslips.pay.ok.200"), HttpStatus.OK);
     }
 }

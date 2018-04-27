@@ -15,23 +15,28 @@ public class Boleto {
     @GeneratedValue(generator = "uuid2")
     @GenericGenerator(name = "uuid2", strategy = "uuid2")
     @Column(name = "uuid", columnDefinition = "BINARY(16)")
+    @JsonProperty("id")
     private UUID id;
 
     @NotBlank
     @Column(name = "DUE_DATE")
-    private String due_date;
+    @JsonProperty("due_date")
+    private String dueDate;
 
     @NotBlank
     @Column(name = "TOTAL_IN_CENT")
     @Min(0)
-    private String total_in_cents;
+    @JsonProperty("total_in_cents")
+    private String totalInCents;
 
     @NotBlank
     @Column(name = "CUSTOMER")
+    @JsonProperty("customer")
     private String customer;
 
     @NotBlank
     @Column(name = "STATUS")
+    @JsonProperty("status")
     private String status;
 
 
@@ -43,20 +48,20 @@ public class Boleto {
         this.id = i;
     }
 
-    public String getDue_date() {
-        return due_date;
+    public String getDueDate() {
+        return dueDate;
     }
 
-    public void setDue_date(String due_date) {
-        this.due_date = due_date;
+    public void setDueDate(String dueDate) {
+        this.dueDate = dueDate;
     }
 
-    public String getTotal_in_cents() {
-        return total_in_cents;
+    public String getTotalInCents() {
+        return totalInCents;
     }
 
-    public void setTotal_in_cents(String total_in_cents) {
-        this.total_in_cents = total_in_cents;
+    public void setTotalInCents(String totalInCents) {
+        this.totalInCents = totalInCents;
     }
 
     public String getCustomer() {

@@ -20,8 +20,8 @@ public class BoletoCalculado {
 
     public BoletoCalculado(Boleto boleto) {
         this.id = boleto.getId();
-        this.due_date = boleto.getDue_date();
-        this.total_in_cents = boleto.getTotal_in_cents();
+        this.due_date = boleto.getDueDate();
+        this.total_in_cents = boleto.getTotalInCents();
         this.customer = boleto.getCustomer();
         this.status = boleto.getStatus();
         trataJuros();

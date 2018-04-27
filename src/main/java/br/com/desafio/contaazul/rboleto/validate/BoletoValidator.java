@@ -29,22 +29,22 @@ public class BoletoValidator implements Validator {
     @Override
     public void validate(Object target, Errors errors) {
         Boleto boleto = (Boleto) target;
-        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "due_date", "422", MensagemResource.getMensagem("bankslips.save.fields.422"));
-        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "total_in_cents", "422",MensagemResource.getMensagem("bankslips.save.fields.422"));
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "dueDate", "422", MensagemResource.getMensagem("bankslips.save.fields.422"));
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "totalInCents", "422",MensagemResource.getMensagem("bankslips.save.fields.422"));
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "customer", "422",MensagemResource.getMensagem("bankslips.save.fields.422"));
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "status", "422",MensagemResource.getMensagem("bankslips.save.fields.422"));
 
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
         try {
-            sdf.parse(boleto.getDue_date());
+            sdf.parse(boleto.getDueDate());
         } catch (ParseException e) {
-            errors.rejectValue("due_date","422",MensagemResource.getMensagem("bankslips.save.fields.422"));
+            errors.rejectValue("dueDate","422",MensagemResource.getMensagem("bankslips.save.fields.422"));
         }
         try{
-            Integer.parseInt(boleto.getTotal_in_cents());
+            Integer.parseInt(boleto.getTotalInCents());
         }catch (Exception e){
-            errors.rejectValue("total_in_cents","422",MensagemResource.getMensagem("bankslips.save.fields.422"));
+            errors.rejectValue("totalInCents","422",MensagemResource.getMensagem("bankslips.save.fields.422"));
         }
 
         BoletoStatusEnum boletoStatusEnum = BoletoStatusEnum.get(boleto.getStatus());

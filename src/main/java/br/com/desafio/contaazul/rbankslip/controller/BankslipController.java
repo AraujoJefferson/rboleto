@@ -6,6 +6,8 @@ import br.com.desafio.contaazul.rbankslip.entity.Bankslip;
 import br.com.desafio.contaazul.rbankslip.entity.BankslipCalculate;
 import br.com.desafio.contaazul.rbankslip.enumerate.BankslipStatusEnum;
 import br.com.desafio.contaazul.rbankslip.exception.BankslipDoesNotExistException;
+import br.com.desafio.contaazul.rbankslip.exception.BankslipUnauthorizedCancelException;
+import br.com.desafio.contaazul.rbankslip.exception.BankslipUnauthorizedPayException;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
@@ -55,23 +57,23 @@ public class BankslipController {
 
     @RequestMapping(method = RequestMethod.PUT, path = "/bankslips/{" + FIELD_NAME_UUID + "}/pay")
     public ResponseEntity<Object> payBankslip(@PathVariable @JsonProperty(FIELD_NAME_UUID) @Pattern(regexp = UUID_PATTERN) @NotNull String uuid) {
-        //TODO VALIDAR BOLETO PAGO E CANCELADO
         Bankslip byId = repositorio.findById(UUID.fromString(uuid)).orElseThrow(BankslipDoesNotExistException::new);
-        if(BankslipStatusEnum.PENDING.equals(byId.getStatus())){
+        if(BankslipStatusEnum.PENDING.getCodigo().equalsIgnoreCase(byId.getStatus())){
             byId.setStatus(BankslipStatusEnum.PAID.toString());
             repositorio.save(byId);
             return new ResponseEntity<Object>(MensageResource.getMensagem("bankslips.pay.ok.200"), HttpStatus.OK);
         }
-        return new ResponseEntity<Object>("", HttpStatus.BAD_REQUEST);
+        throw new BankslipUnauthorizedPayException();
     }
 
     @RequestMapping(method = RequestMethod.DELETE, path = "/bankslips/{" + FIELD_NAME_UUID + "}/cancel")
     public ResponseEntity<Object> cancelBankslip(@PathVariable @JsonProperty(FIELD_NAME_UUID) @Pattern(regexp = UUID_PATTERN) @NotNull String uuid) {
         Bankslip byId = repositorio.findById(UUID.fromString(uuid)).orElseThrow(BankslipDoesNotExistException::new);
-        byId.setStatus(BankslipStatusEnum.CANCELED.toString());
-
-        repositorio.save(byId);
-
-        return new ResponseEntity<Object>(MensageResource.getMensagem("bankslips.cancel.ok.200"), HttpStatus.OK);
+        if(BankslipStatusEnum.PENDING.getCodigo().equalsIgnoreCase(byId.getStatus())){
+            byId.setStatus(BankslipStatusEnum.CANCELED.toString());
+            repositorio.save(byId);
+            return new ResponseEntity<Object>(MensageResource.getMensagem("bankslips.cancel.ok.200"), HttpStatus.OK);
+        }
+        throw new BankslipUnauthorizedCancelException();
     }
 }

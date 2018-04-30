@@ -17,7 +17,6 @@ import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Consumer;
 
 @ControllerAdvice
 public class RestExceptionHandler extends ResponseEntityExceptionHandler {
@@ -54,6 +53,16 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
     @ExceptionHandler(value = {BankslipInvalidFieldsException.class})
     protected ResponseEntity<Object> handleInvalidFields() {
         return new ResponseEntity<Object>(MensageResource.getMensagem("bankslips.save.fields.422"), HttpStatus.UNPROCESSABLE_ENTITY);
+    }
+
+    @ExceptionHandler(value = {BankslipUnauthorizedPayException.class})
+    protected ResponseEntity<Object> handleUnauthorizedPayment() {
+        return new ResponseEntity<Object>(MensageResource.getMensagem("bankslips.pay.401"), HttpStatus.UNAUTHORIZED);
+    }
+
+    @ExceptionHandler(value = {BankslipUnauthorizedCancelException.class})
+    protected ResponseEntity<Object> handleUnauthorizedCancel() {
+        return new ResponseEntity<Object>(MensageResource.getMensagem("bankslips.cancel.401"), HttpStatus.UNAUTHORIZED);
     }
 
     @ExceptionHandler({ConstraintViolationException.class})

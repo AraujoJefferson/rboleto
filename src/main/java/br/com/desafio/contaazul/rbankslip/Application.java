@@ -1,6 +1,6 @@
-package br.com.desafio.contaazul.rboleto;
+package br.com.desafio.contaazul.rbankslip;
 
-import br.com.desafio.contaazul.rboleto.business.BoletoRepository;
+import br.com.desafio.contaazul.rbankslip.business.BankslipRepository;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.ApplicationContext;
@@ -13,7 +13,7 @@ public class Application {
     public static void main(String[] args) {
         ApplicationContext ctx =
         SpringApplication.run(Application.class);
-        BoletoRepository repository = ctx.getBean(BoletoRepository.class);
+        BankslipRepository repository = ctx.getBean(BankslipRepository.class);
         repository.findAll();
     }
 }

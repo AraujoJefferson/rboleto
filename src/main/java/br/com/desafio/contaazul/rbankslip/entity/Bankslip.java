@@ -1,4 +1,4 @@
-package br.com.desafio.contaazul.rboleto.entity;
+package br.com.desafio.contaazul.rbankslip.entity;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.hibernate.annotations.GenericGenerator;
@@ -6,11 +6,13 @@ import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import java.util.Date;
 import java.util.UUID;
 
 @Entity
-@Table(name = "BOLETO")
-public class Boleto {
+@Table(name = "BANKSLIP")
+public class Bankslip {
     @Id
     @GeneratedValue(generator = "uuid2")
     @GenericGenerator(name = "uuid2", strategy = "uuid2")
@@ -18,16 +20,17 @@ public class Boleto {
     @JsonProperty("id")
     private UUID id;
 
-    @NotBlank
+    @NotNull
     @Column(name = "DUE_DATE")
     @JsonProperty("due_date")
-    private String dueDate;
+    @Temporal(TemporalType.DATE)
+    private Date dueDate;
 
-    @NotBlank
+    @NotNull
     @Column(name = "TOTAL_IN_CENT")
     @Min(0)
     @JsonProperty("total_in_cents")
-    private String totalInCents;
+    private Long totalInCents;
 
     @NotBlank
     @Column(name = "CUSTOMER")
@@ -48,19 +51,19 @@ public class Boleto {
         this.id = i;
     }
 
-    public String getDueDate() {
+    public Date getDueDate() {
         return dueDate;
     }
 
-    public void setDueDate(String dueDate) {
+    public void setDueDate(Date dueDate) {
         this.dueDate = dueDate;
     }
 
-    public String getTotalInCents() {
+    public Long getTotalInCents() {
         return totalInCents;
     }
 
-    public void setTotalInCents(String totalInCents) {
+    public void setTotalInCents(Long totalInCents) {
         this.totalInCents = totalInCents;
     }
 

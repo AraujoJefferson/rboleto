@@ -1,12 +1,12 @@
-package br.com.desafio.contaazul.rboleto.enumerate;
+package br.com.desafio.contaazul.rbankslip.enumerate;
 
-public enum BoletoStatusEnum {
+public enum BankslipStatusEnum {
     PENDING("PENDING"), PAID("PAID"),
     CANCELED("CANCELED");
 
     private String codigo;
 
-    BoletoStatusEnum(String codigo) {
+    BankslipStatusEnum(String codigo) {
         this.codigo = codigo;
     }
 
@@ -18,8 +18,8 @@ public enum BoletoStatusEnum {
         this.codigo = codigo;
     }
 
-    public static BoletoStatusEnum get(String codigo){
-        for (BoletoStatusEnum enumValue: BoletoStatusEnum.values()) {
+    public static BankslipStatusEnum get(String codigo){
+        for (BankslipStatusEnum enumValue: BankslipStatusEnum.values()) {
             if(enumValue.getCodigo().equalsIgnoreCase(codigo)){
                 return enumValue;
             }

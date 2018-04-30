@@ -1,9 +1,9 @@
-package br.com.desafio.contaazul.rboleto.test;
+package br.com.desafio.contaazul.rbankslip.test;
 
 
-import br.com.desafio.contaazul.rboleto.Application;
-import br.com.desafio.contaazul.rboleto.business.BoletoRepository;
-import br.com.desafio.contaazul.rboleto.configuration.MensagemResource;
+import br.com.desafio.contaazul.rbankslip.Application;
+import br.com.desafio.contaazul.rbankslip.business.BankslipRepository;
+import br.com.desafio.contaazul.rbankslip.configuration.MensageResource;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -14,10 +14,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.MvcResult;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @RunWith(SpringRunner.class)
@@ -29,14 +27,14 @@ public class ApplicationTests {
     private MockMvc mockMvc;
 
     @Autowired
-    private MensagemResource mensagemResource;
+    private MensageResource mensageResource;
 
     @Autowired
-    private BoletoRepository boletoRepository;
+    private BankslipRepository bankslipRepository;
 
     @Before
     public void deleteAllBeforeTests() throws Exception {
-        boletoRepository.deleteAll();
+        bankslipRepository.deleteAll();
     }
 
     @Test
@@ -47,7 +45,7 @@ public class ApplicationTests {
                         "\"customer\":\"Jefferson P Araujo\"," +
                         "\"status\":\"PENDING\"}"))
                 .andExpect(status().isCreated())
-                .andExpect(content().string(mensagemResource.getMensagem("bankslips.save.ok.201"))).andReturn();
+                .andExpect(content().string(mensageResource.getMensagem("bankslips.save.ok.201"))).andReturn();
     }
 
     @Test
@@ -91,13 +89,13 @@ public class ApplicationTests {
                 .andExpect(status().isCreated());
         mockMvc.perform(put("/rest/bankslips/1/pay"))
                 .andExpect(status().isOk())
-                .andExpect(content().string(mensagemResource.getMensagem("bankslips.pay.ok.200"))).andReturn();
+                .andExpect(content().string(mensageResource.getMensagem("bankslips.pay.ok.200"))).andReturn();
     }
 
     @Test
     public void pagarBoletoNaoExistente() throws Exception {
         mockMvc.perform(put("/rest/bankslips/19/pay"))
                 .andExpect(status().isNotFound())
-                .andExpect(content().string(mensagemResource.getMensagem("bankslips.pay.not.exist.404"))).andReturn();
+                .andExpect(content().string(mensageResource.getMensagem("bankslips.not.exist.404"))).andReturn();
     }
 }

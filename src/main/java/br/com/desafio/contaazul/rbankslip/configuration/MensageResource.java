@@ -1,13 +1,15 @@
-package br.com.desafio.contaazul.rboleto.configuration;
+package br.com.desafio.contaazul.rbankslip.configuration;
 
+import br.com.desafio.contaazul.rbankslip.validate.BankslipValidator;
 import org.springframework.context.MessageSource;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 
 import java.util.Locale;
 
 @Configuration
-public class MensagemResource {
+public class MensageResource {
     private static Locale locale = Locale.getDefault();
 
     private static MessageSource messageSource() {
@@ -19,6 +21,7 @@ public class MensagemResource {
 
     public static String getMensagem(String mensagem, String... values) {
         MessageSource message = messageSource();
-       return message.getMessage(mensagem, values, locale);
+        return message.getMessage(mensagem, values, locale);
     }
+
 }

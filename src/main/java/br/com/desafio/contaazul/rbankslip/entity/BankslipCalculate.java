@@ -1,6 +1,9 @@
 package br.com.desafio.contaazul.rbankslip.entity;
 
+import br.com.desafio.contaazul.rbankslip.controller.BankslipController;
 import br.com.desafio.contaazul.rbankslip.util.ConstantApplication;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.math.BigDecimal;
 import java.text.SimpleDateFormat;

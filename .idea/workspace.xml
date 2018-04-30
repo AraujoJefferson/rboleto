@@ -1,10 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="fba3f1fd-d67e-4224-a5ee-c78f8dfbd376" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/br/com/desafio/contaazul/rbankslip/json/serializer/BankslipCalculateJsonSerializer.java" />
+    <list default="true" id="fba3f1fd-d67e-4224-a5ee-c78f8dfbd376" name="Default" comment="Ajustes:&#10;- Teste">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_logging_log4j_log4j_slf4j_impl_2_10_0.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/log4j2.xml" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__ch_qos_logback_logback_classic_1_2_3.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__ch_qos_logback_logback_core_1_2_3.xml" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_logging_log4j_log4j_to_slf4j_2_10_0.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_logging_log4j_log4j_core_2_10_0.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_logging_2_0_1_RELEASE.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_log4j2_2_0_1_RELEASE.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/br/com/desafio/contaazul/rbankslip/test/ApplicationTests.java" afterPath="$PROJECT_DIR$/src/test/java/br/com/desafio/contaazul/rbankslip/test/ApplicationTests.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rboleto.iml" afterPath="$PROJECT_DIR$/rboleto.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/br/com/desafio/contaazul/rbankslip/controller/BankslipController.java" afterPath="$PROJECT_DIR$/src/main/java/br/com/desafio/contaazul/rbankslip/controller/BankslipController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/br/com/desafio/contaazul/rbankslip/entity/BankslipCalculate.java" afterPath="$PROJECT_DIR$/src/main/java/br/com/desafio/contaazul/rbankslip/entity/BankslipCalculate.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/br/com/desafio/contaazul/rbankslip/exception/RestExceptionHandler.java" afterPath="$PROJECT_DIR$/src/main/java/br/com/desafio/contaazul/rbankslip/exception/RestExceptionHandler.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/application.properties" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/mensagem_en_US.properties" afterPath="$PROJECT_DIR$/src/main/resources/mensagem_en_US.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/mensagem_pt_BR.properties" afterPath="$PROJECT_DIR$/src/main/resources/mensagem_pt_BR.properties" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -20,24 +32,14 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="BankslipController.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="BankslipController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/br/com/desafio/contaazul/rbankslip/controller/BankslipController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="590">
-              <caret line="76" column="44" lean-forward="false" selection-start-line="76" selection-start-column="44" selection-end-line="76" selection-end-column="44" />
+            <state relative-caret-position="291">
+              <caret line="56" column="58" lean-forward="true" selection-start-line="56" selection-start-column="58" selection-end-line="56" selection-end-column="58" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ApplicationTests.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/test/java/br/com/desafio/contaazul/rbankslip/test/ApplicationTests.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="104">
-              <caret line="125" column="30" lean-forward="false" selection-start-line="125" selection-start-column="30" selection-end-line="125" selection-end-column="30" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -45,12 +47,25 @@
       <file leaf-file-name="RestExceptionHandler.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/br/com/desafio/contaazul/rbankslip/exception/RestExceptionHandler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="172">
-              <caret line="59" column="88" lean-forward="false" selection-start-line="59" selection-start-column="71" selection-end-line="59" selection-end-column="88" />
+            <state relative-caret-position="1379">
+              <caret line="91" column="76" lean-forward="false" selection-start-line="91" selection-start-column="76" selection-end-line="91" selection-end-column="76" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
             </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="mensagem_pt_BR.properties" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/mensagem_pt_BR.properties">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="153">
+              <caret line="9" column="30" lean-forward="false" selection-start-line="9" selection-start-column="30" selection-end-line="9" selection-end-column="30" />
+              <folding />
+            </state>
+          </provider>
+          <provider editor-type-id="ResourceBundle">
+            <state />
           </provider>
         </entry>
       </file>
@@ -93,6 +108,7 @@
       <find>uuid</find>
       <find>ConstantApplication.</find>
       <find>dueDate</find>
+      <find>starter</find>
     </findStrings>
     <replaceStrings>
       <replace>bankslips</replace>
@@ -114,17 +130,13 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml.properties" />
-        <option value="$PROJECT_DIR$/src/main/java/br/com/desafio/contaazul/rboleto/bean/Boleto.java" />
         <option value="$PROJECT_DIR$/src/main/java/br/com/desafio/contaazul/rboleto/repository/BoletoRepository.java" />
         <option value="$PROJECT_DIR$/src/main/java/br/com/desafio/contaazul/rboleto/business/BoletoBusiness.java" />
         <option value="$PROJECT_DIR$/src/main/java/br/com/desafio/contaazul/rboleto/cadastro/BoletoController.java" />
         <option value="$PROJECT_DIR$/src/main/java/br/com/desafio/contaazul/rboleto/exceptions/RestExceptionHandler.java" />
-        <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/resources/schema.sql" />
         <option value="$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml" />
         <option value="$PROJECT_DIR$/src/main/java/br/com/desafio/contaazul/rboleto/Application.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/application.properties" />
         <option value="$PROJECT_DIR$/src/main/java/br/com/desafio/contaazul/rboleto/configuration/AppConfig.java" />
         <option value="$PROJECT_DIR$/src/test/java/br/com/desafio/contaazul/rboleto/test/ApplicationTest.java" />
         <option value="$PROJECT_DIR$/src/test/resources/application.properties" />
@@ -159,12 +171,16 @@
         <option value="$PROJECT_DIR$/src/main/java/br/com/desafio/contaazul/rbankslip/util/ConstantApplication.java" />
         <option value="$PROJECT_DIR$/src/main/java/br/com/desafio/contaazul/rbankslip/configuration/MensageResource.java" />
         <option value="$PROJECT_DIR$/src/main/java/br/com/desafio/contaazul/rbankslip/exception/BankslipUnauthorizedPayException.java" />
-        <option value="$PROJECT_DIR$/src/main/java/br/com/desafio/contaazul/rbankslip/exception/RestExceptionHandler.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/mensagem_en_US.properties" />
-        <option value="$PROJECT_DIR$/src/main/resources/mensagem_pt_BR.properties" />
-        <option value="$PROJECT_DIR$/src/main/java/br/com/desafio/contaazul/rbankslip/controller/BankslipController.java" />
         <option value="$PROJECT_DIR$/src/main/java/br/com/desafio/contaazul/rbankslip/json/serializer/BankslipCalculateJsonSerializer.java" />
         <option value="$PROJECT_DIR$/src/test/java/br/com/desafio/contaazul/rbankslip/test/ApplicationTests.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/log4j2.xml" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/resources/application.properties" />
+        <option value="$PROJECT_DIR$/src/main/resources/mensagem_en_US.properties" />
+        <option value="$PROJECT_DIR$/src/main/java/br/com/desafio/contaazul/rbankslip/controller/BankslipController.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/mensagem_pt_BR.properties" />
+        <option value="$PROJECT_DIR$/src/main/java/br/com/desafio/contaazul/rbankslip/entity/BankslipCalculate.java" />
+        <option value="$PROJECT_DIR$/src/main/java/br/com/desafio/contaazul/rbankslip/exception/RestExceptionHandler.java" />
       </list>
     </option>
   </component>
@@ -239,6 +255,15 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="rbankslip" type="462c0819:PsiDirectoryNode" />
+              <item name="business" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="rboleto" type="b2602c69:ProjectViewProjectNode" />
+              <item name="rboleto" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="rbankslip" type="462c0819:PsiDirectoryNode" />
               <item name="configuration" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -249,6 +274,15 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="rbankslip" type="462c0819:PsiDirectoryNode" />
               <item name="controller" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="rboleto" type="b2602c69:ProjectViewProjectNode" />
+              <item name="rboleto" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="rbankslip" type="462c0819:PsiDirectoryNode" />
+              <item name="entity" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="rboleto" type="b2602c69:ProjectViewProjectNode" />
@@ -380,7 +414,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.ApplicationTests">
+  <component name="RunManager" selected="Application.RBOLETO_REST_API">
     <configuration name="ApplicationTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -524,7 +558,7 @@
       <odps_target_file />
       <odps_output_dir>/tmp</odps_output_dir>
     </configuration>
-    <configuration name="Execute" type="MavenRunConfiguration" factoryName="Maven">
+    <configuration name="Execute-skipTest" type="MavenRunConfiguration" factoryName="Maven">
       <MavenSettings>
         <option name="myGeneralSettings" />
         <option name="myRunnerSettings" />
@@ -538,6 +572,30 @@
                 <option value="clean" />
                 <option value="install" />
                 <option value="-Dmaven.test.skip=true" />
+              </list>
+            </option>
+            <option name="profilesMap">
+              <map />
+            </option>
+            <option name="resolveToWorkspace" value="false" />
+            <option name="workingDirPath" value="$PROJECT_DIR$" />
+          </MavenRunnerParameters>
+        </option>
+      </MavenSettings>
+    </configuration>
+    <configuration name="Execute" type="MavenRunConfiguration" factoryName="Maven">
+      <MavenSettings>
+        <option name="myGeneralSettings" />
+        <option name="myRunnerSettings" />
+        <option name="myRunnerParameters">
+          <MavenRunnerParameters>
+            <option name="profiles">
+              <set />
+            </option>
+            <option name="goals">
+              <list>
+                <option value="clean" />
+                <option value="install" />
               </list>
             </option>
             <option name="profilesMap">
@@ -658,17 +716,18 @@
       <properties />
       <listeners />
     </configuration>
-    <list size="10">
+    <list size="11">
       <item index="0" class="java.lang.String" itemvalue="Application.US_RBOLETO_REST_API" />
       <item index="1" class="java.lang.String" itemvalue="Application.BR_RBOLETO_REST_API" />
       <item index="2" class="java.lang.String" itemvalue="Application.RBOLETO_REST_API" />
       <item index="3" class="java.lang.String" itemvalue="Maven.Execute" />
-      <item index="4" class="java.lang.String" itemvalue="MaxCompute SQL.BoletoController.java" />
-      <item index="5" class="java.lang.String" itemvalue="JUnit.ApplicationTests" />
-      <item index="6" class="java.lang.String" itemvalue="JUnit.ApplicationTests.cadastrarBoleto" />
-      <item index="7" class="java.lang.String" itemvalue="JUnit.ApplicationTests.listarBoletos" />
-      <item index="8" class="java.lang.String" itemvalue="JUnit.ApplicationTests.verDetalhesBoleto" />
-      <item index="9" class="java.lang.String" itemvalue="JUnit.ApplicationTests.pagarBoletoNaoExistente" />
+      <item index="4" class="java.lang.String" itemvalue="Maven.Execute-skipTest" />
+      <item index="5" class="java.lang.String" itemvalue="MaxCompute SQL.BoletoController.java" />
+      <item index="6" class="java.lang.String" itemvalue="JUnit.ApplicationTests" />
+      <item index="7" class="java.lang.String" itemvalue="JUnit.ApplicationTests.cadastrarBoleto" />
+      <item index="8" class="java.lang.String" itemvalue="JUnit.ApplicationTests.listarBoletos" />
+      <item index="9" class="java.lang.String" itemvalue="JUnit.ApplicationTests.verDetalhesBoleto" />
+      <item index="10" class="java.lang.String" itemvalue="JUnit.ApplicationTests.pagarBoletoNaoExistente" />
     </list>
     <recent_temporary>
       <list size="5">
@@ -726,7 +785,14 @@
       <option name="project" value="LOCAL" />
       <updated>1525115648964</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Ajustes:&#10;- Teste">
+      <created>1525121227243</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1525121227243</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -834,7 +900,8 @@
     <MESSAGE value="Melhorias:&#10;- Internacionalizacao&#10;- Calculo do boleto&#10;- Pesquisa por UUID" />
     <MESSAGE value="Ajustes:&#10;- Tratando problemas de CamelCase&#10;- Ajustando leitura do spring boot" />
     <MESSAGE value="Ajustes:&#10;- Tratamento de pagamento&#10;- tratamento de cancelamento" />
-    <option name="LAST_COMMIT_MESSAGE" value="Ajustes:&#10;- Tratamento de pagamento&#10;- tratamento de cancelamento" />
+    <MESSAGE value="Ajustes:&#10;- Teste" />
+    <option name="LAST_COMMIT_MESSAGE" value="Ajustes:&#10;- Teste" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -853,7 +920,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/br/com/desafio/contaazul/rbankslip/exception/RestExceptionHandler.java</url>
-          <line>25</line>
+          <line>30</line>
           <properties />
           <option name="timeStamp" value="68" />
         </line-breakpoint>
@@ -865,13 +932,13 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/br/com/desafio/contaazul/rbankslip/entity/BankslipCalculate.java</url>
-          <line>35</line>
+          <line>38</line>
           <properties />
           <option name="timeStamp" value="74" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/br/com/desafio/contaazul/rbankslip/exception/RestExceptionHandler.java</url>
-          <line>36</line>
+          <line>41</line>
           <properties />
           <option name="timeStamp" value="76" />
         </line-breakpoint>
@@ -889,13 +956,13 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/br/com/desafio/contaazul/rbankslip/controller/BankslipController.java</url>
-          <line>51</line>
+          <line>55</line>
           <properties />
           <option name="timeStamp" value="114" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/br/com/desafio/contaazul/rbankslip/exception/RestExceptionHandler.java</url>
-          <line>49</line>
+          <line>58</line>
           <properties />
           <option name="timeStamp" value="116" />
         </line-breakpoint>
@@ -907,7 +974,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/br/com/desafio/contaazul/rbankslip/exception/RestExceptionHandler.java</url>
-          <line>44</line>
+          <line>52</line>
           <properties />
           <option name="timeStamp" value="129" />
         </line-breakpoint>
@@ -922,20 +989,6 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-test/5.0.5.RELEASE/spring-test-5.0.5.RELEASE.jar!/org/springframework/test/context/junit4/statements/RunAfterTestMethodCallbacks.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="14" column="55" lean-forward="false" selection-start-line="14" selection-start-column="55" selection-end-line="14" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-test/5.0.5.RELEASE/spring-test-5.0.5.RELEASE.jar!/org/springframework/test/context/junit4/statements/RunAfterTestExecutionCallbacks.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="14" column="55" lean-forward="false" selection-start-line="14" selection-start-column="55" selection-end-line="14" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/5.0.5.RELEASE/spring-web-5.0.5.RELEASE.jar!/org/springframework/http/HttpStatus.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="132">
@@ -1046,6 +1099,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
           <caret line="9" column="16" lean-forward="false" selection-start-line="9" selection-start-column="7" selection-end-line="9" selection-end-column="16" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1177,28 +1231,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mensagem_pt_BR.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="69" lean-forward="false" selection-start-line="8" selection-start-column="69" selection-end-line="8" selection-end-column="69" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="ResourceBundle">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mensagem_en_US.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="53" lean-forward="true" selection-start-line="5" selection-start-column="34" selection-end-line="8" selection-end-column="53" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="ResourceBundle">
-        <state />
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/junit/junit/4.12/junit-4.12.jar!/org/junit/internal/runners/model/ReflectiveCallable.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
@@ -1211,14 +1243,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
           <caret line="5" column="41" lean-forward="false" selection-start-line="5" selection-start-column="41" selection-end-line="5" selection-end-column="41" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="39" lean-forward="false" selection-start-line="8" selection-start-column="27" selection-end-line="8" selection-end-column="39" />
           <folding />
         </state>
       </provider>
@@ -1257,16 +1281,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/br/com/desafio/contaazul/rbankslip/entity/BankslipCalculate.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="114">
-          <caret line="28" column="0" lean-forward="false" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-test/5.0.5.RELEASE/spring-test-5.0.5.RELEASE.jar!/org/springframework/test/web/servlet/result/StatusResultMatchers.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="121">
@@ -1275,10 +1289,64 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/br/com/desafio/contaazul/rbankslip/controller/BankslipController.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/br/com/desafio/contaazul/rbankslip/test/ApplicationTests.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="590">
-          <caret line="76" column="44" lean-forward="false" selection-start-line="76" selection-start-column="44" selection-end-line="76" selection-end-column="44" />
+        <state relative-caret-position="104">
+          <caret line="125" column="30" lean-forward="false" selection-start-line="125" selection-start-column="30" selection-end-line="125" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/log4j2.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" column="14" lean-forward="false" selection-start-line="18" selection-start-column="14" selection-end-line="18" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="0" lean-forward="true" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mensagem_en_US.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="62" lean-forward="true" selection-start-line="10" selection-start-column="24" selection-end-line="10" selection-end-column="62" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="ResourceBundle">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="169">
+          <caret line="37" column="40" lean-forward="false" selection-start-line="37" selection-start-column="40" selection-end-line="37" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mensagem_pt_BR.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="30" lean-forward="false" selection-start-line="9" selection-start-column="30" selection-end-line="9" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="ResourceBundle">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/br/com/desafio/contaazul/rbankslip/entity/BankslipCalculate.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="172">
+          <caret line="15" column="32" lean-forward="false" selection-start-line="15" selection-start-column="32" selection-end-line="15" selection-end-column="32" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1287,19 +1355,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/br/com/desafio/contaazul/rbankslip/exception/RestExceptionHandler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="172">
-          <caret line="59" column="88" lean-forward="false" selection-start-line="59" selection-start-column="71" selection-end-line="59" selection-end-column="88" />
+        <state relative-caret-position="1379">
+          <caret line="91" column="76" lean-forward="false" selection-start-line="91" selection-start-column="76" selection-end-line="91" selection-end-column="76" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/br/com/desafio/contaazul/rbankslip/test/ApplicationTests.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/br/com/desafio/contaazul/rbankslip/controller/BankslipController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="104">
-          <caret line="125" column="30" lean-forward="false" selection-start-line="125" selection-start-column="30" selection-end-line="125" selection-end-column="30" />
-          <folding />
+        <state relative-caret-position="291">
+          <caret line="56" column="58" lean-forward="true" selection-start-line="56" selection-start-column="58" selection-end-line="56" selection-end-column="58" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

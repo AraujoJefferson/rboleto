@@ -32,8 +32,8 @@ public class ApplicationTests {
     @Autowired
     private MockMvc mockMvc;
 
-    @Autowired
-    private MensageResource mensageResource;
+    //@Autowired
+    //private MensageResource mensageResource;
 
     @Autowired
     private BankslipRepository bankslipRepository;
@@ -51,7 +51,7 @@ public class ApplicationTests {
                         "\"customer\":\"Jefferson P Araujo\"," +
                         "\"status\":\"PENDING\"}"))
                 .andExpect(status().isCreated())
-                .andExpect(content().string(mensageResource.getMensagem("bankslips.save.ok.201"))).andReturn();
+                .andExpect(content().string(MensageResource.getMensagem("bankslips.save.ok.201"))).andReturn();
     }
 
     @Test
@@ -99,14 +99,14 @@ public class ApplicationTests {
         UUID id = geraUUID();
         mockMvc.perform(put("/rest/bankslips/" + id.toString() + "/pay"))
                 .andExpect(status().isOk())
-                .andExpect(content().string(mensageResource.getMensagem("bankslips.pay.ok.200"))).andReturn();
+                .andExpect(content().string(MensageResource.getMensagem("bankslips.pay.ok.200"))).andReturn();
     }
 
     @Test
     public void pagarBoletoNaoExistente() throws Exception {
         mockMvc.perform(put("/rest/bankslips/cb5a9987-af23-4e5a-ac2c-8c190bbdcc19/pay"))
                 .andExpect(status().isNotFound())
-                .andExpect(content().string(mensageResource.getMensagem("bankslips.not.exist.404"))).andReturn();
+                .andExpect(content().string(MensageResource.getMensagem("bankslips.not.exist.404"))).andReturn();
     }
 
     @Test
@@ -116,7 +116,7 @@ public class ApplicationTests {
         bankslipRepository.save(bankslip);
         mockMvc.perform(put("/rest/bankslips/" + bankslip.getId() + "/pay"))
                 .andExpect(status().isUnauthorized())
-                .andExpect(content().string(mensageResource.getMensagem("bankslips.pay.401"))).andReturn();
+                .andExpect(content().string(MensageResource.getMensagem("bankslips.pay.401"))).andReturn();
     }
 
 
@@ -125,14 +125,14 @@ public class ApplicationTests {
         UUID id = geraUUID();
         mockMvc.perform(delete("/rest/bankslips/" + id.toString() + "/cancel"))
                 .andExpect(status().isOk())
-                .andExpect(content().string(mensageResource.getMensagem("bankslips.cancel.ok.200"))).andReturn();
+                .andExpect(content().string(MensageResource.getMensagem("bankslips.cancel.ok.200"))).andReturn();
     }
 
     @Test
     public void cancelarBoletoNaoExistente() throws Exception {
         mockMvc.perform(delete("/rest/bankslips/cb5a9987-af23-4e5a-ac2c-8c190bbdcc19/cancel"))
                 .andExpect(status().isNotFound())
-                .andExpect(content().string(mensageResource.getMensagem("bankslips.not.exist.404"))).andReturn();
+                .andExpect(content().string(MensageResource.getMensagem("bankslips.not.exist.404"))).andReturn();
     }
 
     @Test
@@ -142,6 +142,6 @@ public class ApplicationTests {
         bankslipRepository.save(bankslip);
         mockMvc.perform(delete("/rest/bankslips/" + bankslip.getId() + "/cancel"))
                 .andExpect(status().isUnauthorized())
-                .andExpect(content().string(mensageResource.getMensagem("bankslips.cancel.401"))).andReturn();
+                .andExpect(content().string(MensageResource.getMensagem("bankslips.cancel.401"))).andReturn();
     }
 }

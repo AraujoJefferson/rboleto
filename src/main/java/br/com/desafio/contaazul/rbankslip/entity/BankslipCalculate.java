@@ -10,6 +10,8 @@ import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.UUID;
 
+import static br.com.desafio.contaazul.rbankslip.util.BankslipConstant.*;
+
 public class BankslipCalculate {
 
     private String fine;
@@ -26,11 +28,11 @@ public class BankslipCalculate {
         long days = Duration.between(LocalDateTime.now().toLocalDate().atStartOfDay(), fromDateTime).toDays();
 
         if (days > 0 && days <= 10) {
-            this.fine = new BigDecimal(getTotalInCents()).multiply(new BigDecimal(ConstantApplication.LT10)).setScale(0).toString();
+            this.fine = new BigDecimal(getTotalInCents()).multiply(new BigDecimal(LT10)).setScale(0).toString();
         } else if (days > 10) {
-            this.fine = new BigDecimal(getTotalInCents()).multiply(new BigDecimal(ConstantApplication.GT10)).setScale(0).toString();
+            this.fine = new BigDecimal(getTotalInCents()).multiply(new BigDecimal(GT10)).setScale(0).toString();
         } else {
-            this.fine = ConstantApplication.DEFAULT;
+            this.fine = DEFAULT;
         }
     }
 

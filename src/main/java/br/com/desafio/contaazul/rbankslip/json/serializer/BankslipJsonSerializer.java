@@ -9,15 +9,17 @@ import org.springframework.boot.jackson.JsonComponent;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 
+import static br.com.desafio.contaazul.rbankslip.util.BankslipConstant.*;
+
 @JsonComponent
 public class BankslipJsonSerializer extends JsonSerializer<Bankslip> {
     @Override
     public void serialize(Bankslip bankslip, JsonGenerator jsonGenerator, SerializerProvider serializerProvider) throws IOException {
         jsonGenerator.writeStartObject();
-        jsonGenerator.writeStringField("id", bankslip.getId().toString());
-        jsonGenerator.writeStringField("due_date",new SimpleDateFormat("yyyy-MM-dd").format(bankslip.getDueDate()));
-        jsonGenerator.writeStringField("total_in_cents", bankslip.getTotalInCents().toString());
-        jsonGenerator.writeStringField("customer", bankslip.getCustomer());
+        jsonGenerator.writeStringField(FIELD_NAME_UUID, bankslip.getId().toString());
+        jsonGenerator.writeStringField(FIELD_NAME_DUE_DATE, new SimpleDateFormat("yyyy-MM-dd").format(bankslip.getDueDate()));
+        jsonGenerator.writeStringField(FIELD_NAME_TOTAL_IN_CENT, bankslip.getTotalInCents().toString());
+        jsonGenerator.writeStringField(FIELD_NAME_CUSTOMER, bankslip.getCustomer());
         jsonGenerator.writeEndObject();
     }
 }

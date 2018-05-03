@@ -1,6 +1,5 @@
 package br.com.desafio.contaazul.rbankslip.entity;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
@@ -10,36 +9,33 @@ import javax.validation.constraints.NotNull;
 import java.util.Date;
 import java.util.UUID;
 
+import static br.com.desafio.contaazul.rbankslip.util.BankslipConstant.*;
+
 @Entity
-@Table(name = "BANKSLIP")
+@Table(name = TABLE_NAME_BANKSLIP)
 public class Bankslip {
     @Id
     @GeneratedValue(generator = "uuid2")
     @GenericGenerator(name = "uuid2", strategy = "uuid2")
-    @Column(name = "uuid", columnDefinition = "BINARY(16)")
-    @JsonProperty("id")
+    @Column(name = FIELD_NAME_UUID, columnDefinition = "BINARY(16)")
     private UUID id;
 
     @NotNull
-    @Column(name = "DUE_DATE")
-    @JsonProperty("due_date")
+    @Column(name = FIELD_NAME_DUE_DATE)
     @Temporal(TemporalType.DATE)
     private Date dueDate;
 
     @NotNull
-    @Column(name = "TOTAL_IN_CENT")
+    @Column(name = FIELD_NAME_TOTAL_IN_CENT)
     @Min(0)
-    @JsonProperty("total_in_cents")
     private Long totalInCents;
 
     @NotBlank
-    @Column(name = "CUSTOMER")
-    @JsonProperty("customer")
+    @Column(name = FIELD_NAME_CUSTOMER)
     private String customer;
 
     @NotBlank
-    @Column(name = "STATUS")
-    @JsonProperty("status")
+    @Column(name = FIELD_NAME_STATUS)
     private String status;
 
 

@@ -1,7 +1,6 @@
 package br.com.desafio.contaazul.rbankslip.exception;
 
 import br.com.desafio.contaazul.rbankslip.configuration.MensageResource;
-import br.com.desafio.contaazul.rbankslip.util.ConstantApplication;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.http.HttpHeaders;
@@ -18,15 +17,11 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
 
+import static br.com.desafio.contaazul.rbankslip.util.BankslipConstant.*;
+
 @ControllerAdvice
 public class RestExceptionHandler extends ResponseEntityExceptionHandler {
     private static final Logger loggerREH = LogManager.getLogger(RestExceptionHandler.class);
-    public static final String BANKSLIPS_SAVE_EMPTY_400 = "bankslips.save.empty.400";
-    public static final String BANKSLIPS_SAVE_FIELDS_422 = "bankslips.save.fields.422";
-    public static final String BANKSLIPS_NOT_EXIST_404 = "bankslips.not.exist.404";
-    public static final String BANKSLIPS_INVALID_400 = "bankslips.invalid.400";
-    public static final String BANKSLIPS_PAY_401 = "bankslips.pay.401";
-    public static final String BANKSLIPS_CANCEL_401 = "bankslips.cancel.401";
 
     @Override
     protected ResponseEntity<Object> handleHttpMessageNotReadable(HttpMessageNotReadableException ex, HttpHeaders headers, HttpStatus status, WebRequest request) {
@@ -83,7 +78,7 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
     @ExceptionHandler({ConstraintViolationException.class})
     public ResponseEntity<String> handleConstraintViolation(ConstraintViolationException ex) {
         for (ConstraintViolation<?> violation : ex.getConstraintViolations()) {
-            if (violation.getPropertyPath().toString().contains(ConstantApplication.FIELD_NAME_UUID)) {
+            if (violation.getPropertyPath().toString().contains(FIELD_NAME_UUID)) {
                 loggerREH.error(MensageResource.getMensagem(BANKSLIPS_INVALID_400));
                 return new ResponseEntity<>(MensageResource.getMensagem(BANKSLIPS_INVALID_400), HttpStatus.BAD_REQUEST);
             }

@@ -9,17 +9,19 @@ import org.springframework.boot.jackson.JsonComponent;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 
+import static br.com.desafio.contaazul.rbankslip.util.BankslipConstant.*;
+
 @JsonComponent
 public class BankslipCalculateJsonSerializer extends JsonSerializer<BankslipCalculate> {
     @Override
     public void serialize(BankslipCalculate bankslip, JsonGenerator jsonGenerator, SerializerProvider serializerProvider) throws IOException {
         jsonGenerator.writeStartObject();
-        jsonGenerator.writeStringField("id", bankslip.getId().toString());
-        jsonGenerator.writeStringField("due_date",new SimpleDateFormat("yyyy-MM-dd").format(bankslip.getDueDate()));
-        jsonGenerator.writeStringField("total_in_cents", bankslip.getTotalInCents().toString());
-        jsonGenerator.writeStringField("customer", bankslip.getCustomer());
-        jsonGenerator.writeStringField("fine", bankslip.getFine());
-        jsonGenerator.writeStringField("status", bankslip.getStatus());
+        jsonGenerator.writeStringField(FIELD_NAME_UUID, bankslip.getId().toString());
+        jsonGenerator.writeStringField(FIELD_NAME_DUE_DATE,new SimpleDateFormat("yyyy-MM-dd").format(bankslip.getDueDate()));
+        jsonGenerator.writeStringField(FIELD_NAME_TOTAL_IN_CENT, bankslip.getTotalInCents().toString());
+        jsonGenerator.writeStringField(FIELD_NAME_CUSTOMER, bankslip.getCustomer());
+        jsonGenerator.writeStringField(FIELD_NAME_FINE, bankslip.getFine());
+        jsonGenerator.writeStringField(FIELD_NAME_STATUS, bankslip.getStatus());
         jsonGenerator.writeEndObject();
     }
 }

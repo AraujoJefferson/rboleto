@@ -6,6 +6,8 @@ import org.springframework.context.support.ReloadableResourceBundleMessageSource
 
 import java.util.Locale;
 
+import static br.com.desafio.contaazul.rbankslip.util.ConstantApplication.ENCODE;
+
 @Configuration
 public class MensageResource {
     private static Locale locale = Locale.getDefault();
@@ -13,7 +15,7 @@ public class MensageResource {
     private static MessageSource messageSource() {
         ReloadableResourceBundleMessageSource messageSource = new ReloadableResourceBundleMessageSource();
         messageSource.setBasename("classpath:mensagem");
-        messageSource.setDefaultEncoding("UTF-8");
+        messageSource.setDefaultEncoding(String.valueOf(ENCODE));
         return messageSource;
     }
 

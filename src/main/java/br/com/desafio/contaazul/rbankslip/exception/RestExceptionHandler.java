@@ -1,7 +1,6 @@
 package br.com.desafio.contaazul.rbankslip.exception;
 
 import br.com.desafio.contaazul.rbankslip.configuration.MensageResource;
-import br.com.desafio.contaazul.rbankslip.entity.BankslipCalculate;
 import br.com.desafio.contaazul.rbankslip.util.ConstantApplication;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -18,17 +17,21 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 
 import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
-import java.util.ArrayList;
-import java.util.List;
 
 @ControllerAdvice
 public class RestExceptionHandler extends ResponseEntityExceptionHandler {
-    private static final Logger logger = LogManager.getLogger(RestExceptionHandler.class);
+    private static final Logger loggerREH = LogManager.getLogger(RestExceptionHandler.class);
+    public static final String BANKSLIPS_SAVE_EMPTY_400 = "bankslips.save.empty.400";
+    public static final String BANKSLIPS_SAVE_FIELDS_422 = "bankslips.save.fields.422";
+    public static final String BANKSLIPS_NOT_EXIST_404 = "bankslips.not.exist.404";
+    public static final String BANKSLIPS_INVALID_400 = "bankslips.invalid.400";
+    public static final String BANKSLIPS_PAY_401 = "bankslips.pay.401";
+    public static final String BANKSLIPS_CANCEL_401 = "bankslips.cancel.401";
 
     @Override
     protected ResponseEntity<Object> handleHttpMessageNotReadable(HttpMessageNotReadableException ex, HttpHeaders headers, HttpStatus status, WebRequest request) {
-        logger.error(MensageResource.getMensagem("bankslips.save.empty.400"));
-        return new ResponseEntity<Object>(MensageResource.getMensagem("bankslips.save.empty.400"), HttpStatus.BAD_REQUEST);
+        loggerREH.error(MensageResource.getMensagem(BANKSLIPS_SAVE_EMPTY_400));
+        return new ResponseEntity<>(MensageResource.getMensagem(BANKSLIPS_SAVE_EMPTY_400), HttpStatus.BAD_REQUEST);
     }
 
     @Override
@@ -40,56 +43,54 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
         BindingResult bindingResult = ex.getBindingResult();
 
         if (bindingResult.hasErrors()) {
-            logger.error(MensageResource.getMensagem("bankslips.save.fields.422"));
-            return new ResponseEntity<>(MensageResource.getMensagem("bankslips.save.fields.422"), HttpStatus.UNPROCESSABLE_ENTITY);
+            loggerREH.error(MensageResource.getMensagem(BANKSLIPS_SAVE_FIELDS_422));
+            return new ResponseEntity<>(MensageResource.getMensagem(BANKSLIPS_SAVE_FIELDS_422), HttpStatus.UNPROCESSABLE_ENTITY);
         }
-        logger.error(MensageResource.getMensagem("bankslips.save.empty.400"));
-        return new ResponseEntity<>(MensageResource.getMensagem("bankslips.save.empty.400"), HttpStatus.BAD_REQUEST);
+        loggerREH.error(MensageResource.getMensagem(BANKSLIPS_SAVE_EMPTY_400));
+        return new ResponseEntity<>(MensageResource.getMensagem(BANKSLIPS_SAVE_EMPTY_400), HttpStatus.BAD_REQUEST);
     }
 
     @ExceptionHandler(value = {BankslipDoesNotExistException.class})
-    protected ResponseEntity<Object> handleDoesNotExist() {
-        logger.error(MensageResource.getMensagem("bankslips.not.exist.404"));
-        return new ResponseEntity<Object>(MensageResource.getMensagem("bankslips.not.exist.404"), HttpStatus.NOT_FOUND);
+    protected ResponseEntity<String> handleDoesNotExist() {
+        loggerREH.error(MensageResource.getMensagem(BANKSLIPS_NOT_EXIST_404));
+        return new ResponseEntity<>(MensageResource.getMensagem(BANKSLIPS_NOT_EXIST_404), HttpStatus.NOT_FOUND);
     }
 
     @ExceptionHandler(value = {BankslipInvalidException.class})
-    protected ResponseEntity<Object> handleInvalid() {
-        logger.error(MensageResource.getMensagem("bankslips.invalid.400"));
-        return new ResponseEntity<Object>(MensageResource.getMensagem("bankslips.invalid.400"), HttpStatus.BAD_REQUEST);
+    protected ResponseEntity<String> handleInvalid() {
+        loggerREH.error(MensageResource.getMensagem(BANKSLIPS_INVALID_400));
+        return new ResponseEntity<>(MensageResource.getMensagem(BANKSLIPS_INVALID_400), HttpStatus.BAD_REQUEST);
     }
 
     @ExceptionHandler(value = {BankslipInvalidFieldsException.class})
-    protected ResponseEntity<Object> handleInvalidFields() {
-        logger.error(MensageResource.getMensagem("bankslips.save.fields.422"));
-        return new ResponseEntity<Object>(MensageResource.getMensagem("bankslips.save.fields.422"), HttpStatus.UNPROCESSABLE_ENTITY);
+    protected ResponseEntity<String> handleInvalidFields() {
+        loggerREH.error(MensageResource.getMensagem(BANKSLIPS_SAVE_FIELDS_422));
+        return new ResponseEntity<>(MensageResource.getMensagem(BANKSLIPS_SAVE_FIELDS_422), HttpStatus.UNPROCESSABLE_ENTITY);
     }
 
     @ExceptionHandler(value = {BankslipUnauthorizedPayException.class})
-    protected ResponseEntity<Object> handleUnauthorizedPayment() {
-        logger.error(MensageResource.getMensagem("bankslips.pay.401"));
-        return new ResponseEntity<Object>(MensageResource.getMensagem("bankslips.pay.401"), HttpStatus.UNAUTHORIZED);
+    protected ResponseEntity<String> handleUnauthorizedPayment() {
+        loggerREH.error(MensageResource.getMensagem(BANKSLIPS_PAY_401));
+        return new ResponseEntity<>(MensageResource.getMensagem(BANKSLIPS_PAY_401), HttpStatus.UNAUTHORIZED);
     }
 
     @ExceptionHandler(value = {BankslipUnauthorizedCancelException.class})
     protected ResponseEntity<Object> handleUnauthorizedCancel() {
-        logger.error(MensageResource.getMensagem("bankslips.cancel.401"));
-        return new ResponseEntity<Object>(MensageResource.getMensagem("bankslips.cancel.401"), HttpStatus.UNAUTHORIZED);
+        loggerREH.error(MensageResource.getMensagem(BANKSLIPS_CANCEL_401));
+        return new ResponseEntity<>(MensageResource.getMensagem(BANKSLIPS_CANCEL_401), HttpStatus.UNAUTHORIZED);
     }
 
     @ExceptionHandler({ConstraintViolationException.class})
-    public ResponseEntity<Object> handleConstraintViolation(
-            ConstraintViolationException ex, WebRequest request) {
-        List<String> errors = new ArrayList<>();
+    public ResponseEntity<String> handleConstraintViolation(ConstraintViolationException ex) {
         for (ConstraintViolation<?> violation : ex.getConstraintViolations()) {
             if (violation.getPropertyPath().toString().contains(ConstantApplication.FIELD_NAME_UUID)) {
-                logger.error(MensageResource.getMensagem("bankslips.invalid.400"));
-                return new ResponseEntity<Object>(MensageResource.getMensagem("bankslips.invalid.400"), HttpStatus.BAD_REQUEST);
+                loggerREH.error(MensageResource.getMensagem(BANKSLIPS_INVALID_400));
+                return new ResponseEntity<>(MensageResource.getMensagem(BANKSLIPS_INVALID_400), HttpStatus.BAD_REQUEST);
             }
-            logger.error(MensageResource.getMensagem(violation.getRootBeanClass().getName() + " " +
+            loggerREH.error(MensageResource.getMensagem(violation.getRootBeanClass().getName() + " " +
                     violation.getPropertyPath() + ": " + violation.getMessage()));
         }
-        logger.error(MensageResource.getMensagem("bankslips.save.fields.422"));
-        return new ResponseEntity<Object>(MensageResource.getMensagem("bankslips.save.fields.422"), HttpStatus.UNPROCESSABLE_ENTITY);
+        loggerREH.error(MensageResource.getMensagem(BANKSLIPS_SAVE_FIELDS_422));
+        return new ResponseEntity<>(MensageResource.getMensagem(BANKSLIPS_SAVE_FIELDS_422), HttpStatus.UNPROCESSABLE_ENTITY);
     }
 }

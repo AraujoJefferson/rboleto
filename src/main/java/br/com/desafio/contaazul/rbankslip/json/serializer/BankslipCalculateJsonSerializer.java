@@ -1,6 +1,5 @@
 package br.com.desafio.contaazul.rbankslip.json.serializer;
 
-import br.com.desafio.contaazul.rbankslip.entity.Bankslip;
 import br.com.desafio.contaazul.rbankslip.entity.BankslipCalculate;
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.JsonSerializer;

@@ -14,10 +14,6 @@ public enum BankslipStatusEnum {
         return codigo;
     }
 
-    public void setCodigo(String codigo) {
-        this.codigo = codigo;
-    }
-
     public static BankslipStatusEnum get(String codigo){
         for (BankslipStatusEnum enumValue: BankslipStatusEnum.values()) {
             if(enumValue.getCodigo().equalsIgnoreCase(codigo)){
@@ -27,6 +23,7 @@ public enum BankslipStatusEnum {
         return null;
     }
 
+    @Override
     public String toString(){
         return this.getCodigo();
     }

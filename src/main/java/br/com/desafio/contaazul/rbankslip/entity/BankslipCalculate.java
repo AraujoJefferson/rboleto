@@ -1,9 +1,6 @@
 package br.com.desafio.contaazul.rbankslip.entity;
 
-import br.com.desafio.contaazul.rbankslip.controller.BankslipController;
 import br.com.desafio.contaazul.rbankslip.util.ConstantApplication;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
@@ -15,19 +12,11 @@ import java.util.UUID;
 
 public class BankslipCalculate {
 
-    private UUID id;
-    private Date dueDate;
-    private Long totalInCents;
-    private String customer;
     private String fine;
-    private String status;
+    private Bankslip bankslip;
 
     public BankslipCalculate(Bankslip bankslip) {
-        this.id = bankslip.getId();
-        this.dueDate = bankslip.getDueDate();
-        this.totalInCents = bankslip.getTotalInCents();
-        this.customer = bankslip.getCustomer();
-        this.status = bankslip.getStatus();
+        this.bankslip = bankslip;
         trataJuros();
     }
 
@@ -37,9 +26,9 @@ public class BankslipCalculate {
         long days = Duration.between(LocalDateTime.now().toLocalDate().atStartOfDay(), fromDateTime).toDays();
 
         if (days > 0 && days <= 10) {
-            this.fine = new BigDecimal(totalInCents).multiply(new BigDecimal(ConstantApplication.LT10)).setScale(0).toString();
+            this.fine = new BigDecimal(getTotalInCents()).multiply(new BigDecimal(ConstantApplication.LT10)).setScale(0).toString();
         } else if (days > 10) {
-            this.fine = new BigDecimal(totalInCents).multiply(new BigDecimal(ConstantApplication.GT10)).setScale(0).toString();
+            this.fine = new BigDecimal(getTotalInCents()).multiply(new BigDecimal(ConstantApplication.GT10)).setScale(0).toString();
         } else {
             this.fine = ConstantApplication.DEFAULT;
         }
@@ -47,50 +36,27 @@ public class BankslipCalculate {
 
 
     public UUID getId() {
-        return id;
-    }
-
-    public void setId(UUID id) {
-        this.id = id;
+        return bankslip.getId();
     }
 
     public Date getDueDate() {
-        return dueDate;
-    }
-
-    public void setDueDate(Date dueDate) {
-        this.dueDate = dueDate;
+        return bankslip.getDueDate();
     }
 
     public Long getTotalInCents() {
-        return totalInCents;
-    }
-
-    public void setTotalInCents(Long totalInCents) {
-        this.totalInCents = totalInCents;
+        return bankslip.getTotalInCents();
     }
 
     public String getCustomer() {
-        return customer;
-    }
-
-    public void setCustomer(String customer) {
-        this.customer = customer;
+        return bankslip.getCustomer();
     }
 
     public String getFine() {
         return fine;
     }
 
-    public void setFine(String fine) {
-        this.fine = fine;
-    }
-
     public String getStatus() {
-        return status;
+        return bankslip.getStatus();
     }
 
-    public void setStatus(String status) {
-        this.status = status;
-    }
 }

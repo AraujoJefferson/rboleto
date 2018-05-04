@@ -1,0 +1,176 @@
+{
+	"id": "d718dbf4-8dd3-1108-2637-5f2ef64a6837",
+	"name": "ContaAzul-RBoleto",
+	"description": "",
+	"order": [
+		"cc064ffa-8368-cd0e-113f-d92d124ea11f",
+		"6aaf9991-2077-86f4-1f59-80b8fb576921",
+		"11603cb0-c27e-761d-fabb-48a78aa0f198",
+		"d6784177-b1b6-568c-d0ae-3c1a4e11860c",
+		"cd12cf6c-562f-2ad6-5753-92af8025fb2f"
+	],
+	"folders": [],
+	"folders_order": [],
+	"timestamp": 1524099422728,
+	"owner": "2441069",
+	"public": false,
+	"requests": [
+		{
+			"id": "11603cb0-c27e-761d-fabb-48a78aa0f198",
+			"headers": "Content-Type: application/json\nAccept: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Accept",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "localhost:8080/rest/bankslips/1",
+			"queryParams": [
+				{
+					"key": "id",
+					"value": "2",
+					"equals": true,
+					"description": "",
+					"enabled": false
+				}
+			],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1524365290031,
+			"name": "GET-bankslips-Calcula-Juros",
+			"description": "Cadastrar Boleto",
+			"collectionId": "d718dbf4-8dd3-1108-2637-5f2ef64a6837",
+			"responses": [],
+			"rawModeData": "{\"due_date\":\"2012-03-01\",\n\"total_in_cents\":\"1000\",\n\"customer\":\"Jefferson P Araujo\",\n\"status\":\"PENDING\"}"
+		},
+		{
+			"id": "6aaf9991-2077-86f4-1f59-80b8fb576921",
+			"headers": "Content-Type: application/json\nAccept: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Accept",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "localhost:8080/rest/bankslips",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1524365058635,
+			"name": "GET-bankslips-Listar",
+			"description": "Cadastrar Boleto",
+			"collectionId": "d718dbf4-8dd3-1108-2637-5f2ef64a6837",
+			"responses": [],
+			"rawModeData": "{\"due_date\":\"2012-03-01\",\n\"total_in_cents\":\"1000\",\n\"customer\":\"Jefferson P Araujo\",\n\"status\":\"PENDING\"}"
+		},
+		{
+			"id": "cc064ffa-8368-cd0e-113f-d92d124ea11f",
+			"headers": "Content-Type: application/json\nAccept: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Accept",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "localhost:8080/rest/bankslips",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1524616592922,
+			"name": "POST-bankslips-Cadastrar",
+			"description": "Cadastrar Boleto",
+			"collectionId": "d718dbf4-8dd3-1108-2637-5f2ef64a6837",
+			"responses": [],
+			"rawModeData": "{\"due_date\":\"2018-04-24\",\n\"total_in_cents\":\"1000\",\n\"customer\":\"Jefferson P Araujo\",\n\"status\":\"PENDING\"}"
+		},
+		{
+			"id": "cd12cf6c-562f-2ad6-5753-92af8025fb2f",
+			"headers": "",
+			"headerData": [],
+			"url": "localhost:8080/rest/bankslips/6a2ec4af-a8ad-48b6-a90e-8fc9b30740b9/cancel",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "DELETE",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1525040149224,
+			"name": "GET-bankslips-DELETE",
+			"description": "Cadastrar Boleto",
+			"collectionId": "d718dbf4-8dd3-1108-2637-5f2ef64a6837",
+			"responses": [],
+			"rawModeData": ""
+		},
+		{
+			"id": "d6784177-b1b6-568c-d0ae-3c1a4e11860c",
+			"headers": "",
+			"headerData": [],
+			"url": "localhost:8080/rest/bankslips/1/pay",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "PUT",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1524426389429,
+			"name": "GET-bankslips-PAID",
+			"description": "Cadastrar Boleto",
+			"collectionId": "d718dbf4-8dd3-1108-2637-5f2ef64a6837",
+			"responses": [],
+			"rawModeData": ""
+		}
+	]
+}

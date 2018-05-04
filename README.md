@@ -28,6 +28,8 @@ Com a execução realizada com sucesso, executar na raiz da aplicação como aba
 
 ```java -jar target/rboleto-1.0-SNAPSHOT.jar```
 
+A partir de agora você poderá acessar os serviços pelos [endpoints](#endpoints).
+
 Para utilizar a última versão estável, usar o link abaixo:
 
 ``` docker run -p 8080:8080 jeffersonaraujop/rboleto:latest ```

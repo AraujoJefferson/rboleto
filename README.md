@@ -20,7 +20,7 @@ Abaixo iremos subir uma ferramenta para auxiliar na análise do código, SonnarQ
 
 ``` docker run -p 9000:9000 jeffersonaraujop/sonar:latest ```
 
-Iremos fazer o checkout via GitHub e na raiz do projeto executar o comando abaixo:
+Fazer o checkout via GitHub e na raiz do projeto executar o comando abaixo:
 
 ``` mvn clean install ```
 

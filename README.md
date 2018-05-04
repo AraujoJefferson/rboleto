@@ -24,13 +24,13 @@ Fazer o checkout via GitHub e na raiz do projeto executar o comando abaixo:
 
 ``` mvn clean install ```
 
-Com a execução realizada com sucesso, executar na raiz da aplicação como abaixo:
+Com a execução realizada com sucesso, executar na raiz da aplicação:
 
 ```java -jar target/rboleto-1.0-SNAPSHOT.jar```
 
 A partir de agora você poderá acessar os serviços pelos [endpoints](#endpoints).
 
-Para utilizar a última versão estável, usar o link abaixo:
+Para utilizar a última versão estável:
 
 ``` docker run -p 8080:8080 jeffersonaraujop/rboleto:latest ```
 
